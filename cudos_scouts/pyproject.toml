@@ -1,0 +1,20 @@
+[project]
+name = "cudos_scouts"
+version = "0.1.0"
+description = "cudos_scouts using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.80.0,<1.0.0"
+]
+
+[project.scripts]
+cudos_scouts = "cudos_scouts.main:run"
+run_crew = "cudos_scouts.main:run"
+train = "cudos_scouts.main:train"
+replay = "cudos_scouts.main:replay"
+test = "cudos_scouts.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
