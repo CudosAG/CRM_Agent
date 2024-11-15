@@ -12,19 +12,16 @@ OPENAPI_DEF = """
     }
   ],
   "paths": {
-    "/crm/sqlquery": {
+    "/crm/query": {
       "get": {
         "description": "Query the crm database",
-        "operationId": "SQLQuery",
+        "operationId": "Query",
     
         "parameters": [
           {
             "name": "query",
             "in": "query",
-            "description": "Query the crm database'.
-There are three tables in the database: 'organizations', 'people' and 'leads'.
-The organizations table has the following fields:
-Organisationsname,Webseite,"Umsatz (MIO CHF)","Distanz ZH (km)",zuständig,"Distanz Chur (km)","primäre E-Mail",Branche,Rechnungsadresse,"Rechnung PLZ","Rechnung Postfach","Rechnung Ort","Rechnung Land","Klassifizierung Softwareentwicklung und -testing ","Klassifizierung Prüfsysteme","Klassifizierung AI (Künstliche Intelligenz)","Klassifizierung Azure","Klassifizierung Traineeprogramm","Klassifizierung swissICT Booster 50+",Typ,Beschreibung,Unternehmenszweck,Verwaltungsrat,Zeichnungsberechtigte,Kundenart",
+            "description": "Query the crm database. There are three tables in the database: 'organizations', 'people' and 'leads'. The organizations table has the following fields: Organisationsname,Webseite,\"Umsatz (MIO CHF)\",\"Distanz ZH (km)\",zuständig,\"Distanz Chur (km)\",\"primäre E-Mail\",Branche,Rechnungsadresse,\"Rechnung PLZ\",\"Rechnung Postfach\",\"Rechnung Ort\",\"Rechnung Land\",\"Klassifizierung Softwareentwicklung und -testing \",\"Klassifizierung Prüfsysteme\",\"Klassifizierung AI (Künstliche Intelligenz)\",\"Klassifizierung Azure\",\"Klassifizierung Traineeprogramm\",\"Klassifizierung swissICT Booster 50+\",Typ,Beschreibung,Unternehmenszweck,Verwaltungsrat,Zeichnungsberechtigte,Kundenart",
             "required": true,
             "schema": {
               "type": "string"

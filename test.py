@@ -23,6 +23,7 @@ def test_ai(query):
         # Hier solltest du sicherstellen, dass der Service tatsächlich läuft und die erwartete Antwort zurückgibt
         response = requests.get(f"{PLAIN_URL}?query={query}", headers=headers)
         response_data = response.json()
+        print(response_data)
         ans = get_single_completion("Enthält das folgende Objekt eine Aussage über eine Anzahl von Einträgen? Bitte Antwote NUR mit 'JA' oder 'NEIN': "+
                 json.dumps(response_data))
         return ans
