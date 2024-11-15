@@ -69,7 +69,7 @@ tests_crm = [
         # { "question":"Welche offenen potentiale mit startdatum < 31.12.24 gibt es?",
         #    "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
         # },
-         { "question":"Welche offenen potentiale gibt es?",
+         { "question":"Welche offenen potentiale gibt es mit startdatum < 31.12.24? Gib Name, Kunde, Startdatum und status zurück",
            "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
          },        
 ]

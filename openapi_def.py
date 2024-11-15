@@ -1,4 +1,4 @@
-OPENAPI_DEF_CRM = """
+OPENAPI_DEF = """
 {
    "openapi":"3.1.0",
    "info":{
@@ -33,38 +33,16 @@ Always limit the number of answers to 20 entries",
             ],
             "deprecated":false
          }
-      }
-   },
-   "components":{
-      "schemas":{
-         
-      }
-   }
-}"""
-
-OPENAPI_DEF_TODO = """
-{
-   "openapi":"3.1.0",
-   "info":{
-      "title":"Manage Todo List",
-      "description":"Provides access to a todo list with ",
-      "version":"v1.0.0"
-   },
-   "servers":[
-      {
-         "url":"https://baettig.org"
-      }
-   ],
-   "paths":{
+      },
       "/crm/todos":{
          "get":{
             "description":"Manage the todo list",
-            "operationId":"Query",
+            "operationId":"Todos",
             "parameters":[
                {
                   "name":"query",
                   "in":"query",
-                  "description":"Ask questions about the todo list like 'What todos are there?' or 'Add a todo: Name: Max1, Firma: IBM1, Notiz: Test, Deadline: 2023-12-31' or 'delete todo with UID 123'",
+                  "description":"Ask questions about the todo list like 'What todos are there?' or 'Add a todo: Name: Max1, Firma: IBM1, Notiz: Test, Deadline: 2023-12-31' or 'delete todo with UID 123'. Name is always the Name of the User",
                   "required":true,
                   "schema":{
                      "type":"string"
