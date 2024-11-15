@@ -2,8 +2,8 @@ OPENAPI_DEF = """
     {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get timesheet entries",
-    "description": "Retrieves timesheet entries for the company",
+    "title": "Get CRM Information",
+    "description": "Provides access to Companies, People and Leads in the CRM system.",
     "version": "v1.0.0"
   },
   "servers": [
@@ -12,7 +12,7 @@ OPENAPI_DEF = """
     }
   ],
   "paths": {
-    "/rolx/sqlquery": {
+    "/crm/sqlquery": {
       "get": {
         "description": "Get timesheet data",
         "operationId": "SQLQuery",
@@ -21,15 +21,10 @@ OPENAPI_DEF = """
           {
             "name": "query",
             "in": "query",
-            "description": "The SQL query for the table 'data'.
-The fields of the timesheet database include:
-date, firstName, lastName, projectNumber, subprojectNumber, activityNumber, orderNumber (in the form of #0123.456 where 123 is the projectNumber and 456 is the subprojectNumber), customerName, projectName, subprojectName, activityName, durationHours, billabilityName, isBillable (1 for billable, 0 for non-billable), comment.
-If you have to calculate the billability, do the following:
-- get all hours where billabilityName!=Abwesenheit as Anwesenheit
-- get all hours where isBillable = 1 as Billable
-- calculate the billability as Billable/Anwesenheit
-
-If ever possible, do the calculations in the SQL statement.",
+            "description": "Query the crm database'.
+There are three tables in the database: 'organizations', 'people' and 'leads'.
+The organizations table has the following fields:
+Organisationsname,Webseite,"Umsatz (MIO CHF)","Distanz ZH (km)",zuständig,"Distanz Chur (km)","primäre E-Mail",Branche,Rechnungsadresse,"Rechnung PLZ","Rechnung Postfach","Rechnung Ort","Rechnung Land","Klassifizierung Softwareentwicklung und -testing ","Klassifizierung Prüfsysteme","Klassifizierung AI (Künstliche Intelligenz)","Klassifizierung Azure","Klassifizierung Traineeprogramm","Klassifizierung swissICT Booster 50+",Typ,Beschreibung,Unternehmenszweck,Verwaltungsrat,Zeichnungsberechtigte,Kundenart",
             "required": true,
             "schema": {
               "type": "string"

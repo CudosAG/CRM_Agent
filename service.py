@@ -1,18 +1,19 @@
-import sys
 import os
 import json
 
 from flask import Flask, request, jsonify
-from rolx import Rolx
+from crm import Crm
 from tools import Tools
 from openapi_def import OPENAPI_DEF
 
-sys.path.append('common')
-from gpt import get_completion_with_tools, get_single_completion # type: ignore
+from dotenv import load_dotenv
+load_dotenv()
+
+from common.gpt import get_completion_with_tools, get_single_completion # type: ignore
 
 app = Flask(__name__)
-rolx = Rolx()
-tools = Tools(rolx)
+crm = Crm()
+tools = Tools(crm)
 
 # Laden Sie den geheimen Token aus einer Umgebungsvariable
 RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')
@@ -33,7 +34,7 @@ def query_is_dangerous(query):
     return False
     
 
-@app.route('/crm', methods=['GET'])
+@app.route('/rolx', methods=['GET'])
 def test():
     return OPENAPI_DEF, 200
 
@@ -56,28 +57,6 @@ def plain_text_query():
             return result, 200
         else:
             return jsonify({"result": result}), 200
-    except Exception as e:
-        return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
-
-@app.route('/crm/sqlquery', methods=['GET'])
-def get_data():
-    # Prüfen, ob der Authorization-Header vorhanden ist und dem geheimen Token entspricht
-    auth_header = request.headers.get('Authorization')
-    if auth_header != RETOS_API_TOKEN:
-        return jsonify({'message': 'Unauthorized'}), 401
-
-    query = request.args.get('query')
-
-    if not query:
-        return jsonify({'message': 'Query parameter is required'}), 400
-
-    if query_is_dangerous(query):
-        return jsonify({"result": "Dangerous query detected"}), 403
-    
-    # Führe die SQL-Abfrage aus
-    try:
-        result = rolx.get_data(query)  # Hier wird die Funktion aufgerufen
-        return result, 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
     

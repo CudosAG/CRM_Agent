@@ -1,15 +1,13 @@
-import pandas as pd
-from pandasql import sqldf
-import datetime
 import json
+from crm import Crm
 
 class Tools:
-    def __init__(self, rolx):
-        self.rolx = rolx
+    def __init__(self, crm: Crm):
+        self.crm = crm
 
-    def get_rolx_data(self, sql_query):
+    def get_crm_data(self, sql_query):
         try:
-            result = self.rolx.get_data(sql_query) 
+            result = self.crm.get_data(sql_query) 
         except Exception as e:
             return json.dumps({"error": str(e)})
         
@@ -20,24 +18,17 @@ class Tools:
             {
                 "type": "function",
                 "function": {
-                    "name": "get_rolx_data",
-                    "description": "Gets timesheet data from the RolX database",
+                    "name": "get_crm_data",
+                    "description": "Query the CRM data",
                     "parameters": {
                         "type": "object",
                         "properties": {
                             "query": {
                                 "type": "string",
                                 "description": """
-The SQL query for the table 'data'.
-The fields of the timesheet database include:
-date, firstName, lastName, projectNumber, subprojectNumber, activityNumber, orderNumber (in the form of #0123.456 where 123 is the projectNumber and 456 is the subprojectNumber), customerName, projectName, subprojectName, activityName, durationHours, billabilityName, isBillable (1 for billable, 0 for non-billable), comment.
-If you have to calculate the billability, do the following:
-- get all hours where billabilityName!=Abwesenheit as Anwesenheit
-- get all hours where isBillable = 1 as Billable
-- calculate the billability as Billable/Anwesenheit
-
-If ever possible, do the calculations in the SQL statement.
-Wrap all dates in the query with the DATE() function.
+Perform SQL queries on the table 'organizations'.
+The organizations table has the following fields:
+Organisationsname,Webseite,"Umsatz (MIO CHF)","Distanz ZH (km)",zuständig,"Distanz Chur (km)","primäre E-Mail",Branche,Rechnungsadresse,"Rechnung PLZ","Rechnung Postfach","Rechnung Ort","Rechnung Land","Klassifizierung Softwareentwicklung und -testing ","Klassifizierung Prüfsysteme","Klassifizierung AI (Künstliche Intelligenz)","Klassifizierung Azure","Klassifizierung Traineeprogramm","Klassifizierung swissICT Booster 50+",Typ,Beschreibung,Unternehmenszweck,Verwaltungsrat,Zeichnungsberechtigte,Kundenart"
 """,
                             }
                         },
@@ -48,7 +39,7 @@ Wrap all dates in the query with the DATE() function.
         return tools
     
     def call_function(self, function_name, function_to_call, function_args):
-        if function_name == "get_rolx_data":
+        if function_name == "get_crm_data":
             function_response = function_to_call(
                 sql_query=function_args.get("query")
             )
@@ -63,7 +54,7 @@ Wrap all dates in the query with the DATE() function.
             return None
         
         available_functions = {
-            "get_rolx_data": self.get_rolx_data
+            "get_crm_data": self.get_crm_data
         }  
 
         function_name = tool_call.function.name
