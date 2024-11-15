@@ -1,4 +1,5 @@
 import json
+import logging
 from crm import Crm
 
 class Tools:
@@ -60,7 +61,7 @@ If there are more than 50 rows, the query should return an additional informatio
             function_response = json.dumps({"error": "function not found: "+function_name})
         return function_response
 
-    def handle_tool_call(self, tool_call, messages):
+    def handle_tool_call(self, tool_call, messages, request_id = None):
         error = False
         if not tool_call:
             return None
@@ -80,6 +81,7 @@ If there are more than 50 rows, the query should return an additional informatio
 
         print("Calling function: ", function_name, " with args: ", function_args)
 
+        logging.info(f"{request_id} Calling function: {function_name} with args: {function_args}")
         function_response = self.call_function(function_name, function_to_call, function_args)
         
         messages.append(

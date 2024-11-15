@@ -1,5 +1,6 @@
 import os
 import json
+import uuid
 
 from flask import Flask, request, jsonify
 from crm import Crm
@@ -8,6 +9,16 @@ from openapi_def import OPENAPI_DEF
 
 from dotenv import load_dotenv
 load_dotenv()
+
+import logging
+
+# Configure the logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename='crm.log',
+    filemode='w'
+)
 
 from common.gpt import get_completion_with_tools, get_single_completion # type: ignore
 
@@ -27,12 +38,6 @@ def is_valid_json(json_string):
     except ValueError:
         return False
     
-def query_is_dangerous(query):
-    ans = get_single_completion("Is the following SQL query dangerous? Answer only YES or NO: "+query)
-    if ans.upper() == 'YES':
-        return True
-    return False
-    
 
 @app.route('/crm', methods=['GET'])
 def test():
@@ -51,8 +56,10 @@ def plain_text_query():
         return jsonify({'message': 'Query parameter is required'}), 400
 
     try:
+        request_id = str(uuid.uuid4())
+        logging.info(f"{request_id} Received query: {query}")
         messages=[{"role": "user", "content": query}]
-        result = get_completion_with_tools(messages, tools)
+        result = get_completion_with_tools(messages, tools, request_id)
         if is_valid_json(result):
             return result, 200
         else:
