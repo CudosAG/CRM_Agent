@@ -7,7 +7,7 @@ from crm import Crm
 from todo import Todo
 from tools import Tools
 from tools_todo import ToolsTodo
-from openapi_def import OPENAPI_DEF
+from openapi_def import OPENAPI_DEF_CRM, OPENAPI_DEF_TODO
 from preprocessing import preprocess
 from dotenv import load_dotenv
 load_dotenv()
@@ -37,7 +37,8 @@ def is_valid_json(json_string):
 
 @app.route('/crm', methods=['GET'])
 def test():
-    return OPENAPI_DEF, 200
+    s = "<html><body><pre>"+OPENAPI_DEF_CRM+"\n\n"+OPENAPI_DEF_TODO+"</pre></body></html>"
+    return s, 200
 
 @app.route('/crm/query', methods=['GET'])
 def plain_text_query():
