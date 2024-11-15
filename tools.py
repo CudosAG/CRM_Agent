@@ -41,7 +41,7 @@ Table 1: people
 - Abteilung: F&E
 - HatFirmaVerlassen: Ja
 
-Table 2: organization
+Table 2: organizations
 - Name: IBM
 - Adresse: Wesstrasse 3, 8000 Zürich, Schweiz
 - DistanzZH: 5km
@@ -63,7 +63,7 @@ Table 3: leads
 - Startdatum: 01.01.2023
 - Status: [inaktiv|gewonnen|verloren|gestorben]
 
-Die Spalte Firma in den Tabellen leads und people ist ein Schlüssel für organization->Name.
+Die Spalte Firma in den Tabellen leads und people ist ein Schlüssel für organizations->Name.
 
 Die Anzahl der Ergebnisse muss auf 50 Zeilen begrenzt werden, wählen Sie nur die für Ihre Abfrage erforderlichen Felder aus.
 Wenn es mehr als 50 Zeilen gibt, sollte die Abfrage eine zusätzliche Informationsmeldung zurückgeben.
