@@ -30,18 +30,40 @@ class Tools:
                                 "type": "string",
                                 "description": """
 Führe SQL Queries auf der Datenbank aus. Die Datenbank enthält Informationen über Organisationen, Leads und Personen. Die Tabellen sind wie folgt aufgebaut:
-Die Tabelle organizations hat folgende Felder:
-Organisationsname,Webseite,"Umsatz (MIO CHF)","Distanz ZH (km)",zuständig,"Distanz Chur (km)","primäre E-Mail",Branche,Rechnungsadresse,"Rechnung PLZ","Rechnung Postfach","Rechnung Ort","Rechnung Land","Klassifizierung Softwareentwicklung und -testing ","Klassifizierung Prüfsysteme","Klassifizierung AI (Künstliche Intelligenz)","Klassifizierung Azure","Klassifizierung Traineeprogramm","Klassifizierung swissICT Booster 50+",Typ,Beschreibung,Unternehmenszweck,Verwaltungsrat,Zeichnungsberechtigte,Kundenart"
 
-Die Tabelle leads hat folgende Felder:
-Potentialname,"Potential Nr.",Organisationsname,Art,Personename,zuständig,Verkaufskanal,erstellt,Kampagne,geändert,"aus Lead erstellt",BU,Projektnummer,"Betrag Engineering",Wahrscheinlichkeit,"Betrag Material","Gewichteter Betrag Engineering","Einsatzdauer (Mt.)","Betrag Externe",Identifiziert,Offeriert,Geschlossen,"Grund Verloren","Potential Abschluss",Endstatus,"Voraussichtliches Startdatum"
+Table 1: people
+- Name: Mustermann
+- Vorname: Max
+- Firma: IBM
+- Telefon: 079 123 45 43
+- Email: max.mustermann@ibm.ch
+- Position: Entwicklungsleiter
+- Abteilung: F&E
+- HatFirmaVerlassen: Ja
 
-Der Tabelle people hat folgende Felder:
-Anrede,Vorname,Nachname,"Personen Nr.",Organisation,"Akad. Titel","Telefon Büro",Position,"mobiles Telefon","Job Level","Department / Business Unit","primäre E-Mail",zuständig,erstellt,"Hat Unternehmen verlassen","aus Lead erstellt","Info Unternehmen verlassen",geändert,Straße,PLZ,Postfach,Ort,Land,Beschreibung,"Letter Language",Newsletter/E-Mail,"Typ Zusammenarbeit","Grund Newsletter/E-Mail Nein","Trainee-Programm vorgestellt","HR Bulletin",Kontakthistorie,"Blog abonniert?",Weihnachtsgeschenke,Trainee-Newsletter,Überbringer,Task/Kampagne,Task-Status,"*Grund für Absage","Wiedervorlage Datum","Fall geschlossen"
+Table 2: organization
+- Name: IBM
+- Adresse: Wesstrasse 3, 8000 Zürich, Schweiz
+- DistanzZH: 5km
+- DistanzChur: 90km
+- Groesse: 5000 Mitarbeiter
+- Umsatz: 5Mio CHF
+- Klassifizierung_Cudos_Trail: [0 - abklären|1 - High Potential|2 - Regelmässig Nachfassen|3 - Wenig Potential|5 - Kein Potential]  
+- Klassifizierung_Pruefsyseme: 1 - High Potential
+- Klassifizierung_AI: 1 - High Potential
+- Klassifizierung_Software: 3 - Wenig Potential
 
-Die Tabellen organization und people sind über das Feld "Organisation" in der people Tabelle verknüpft. Das Feld "Organisation" enthält den Namen der Organisation mit dem Präfix "Accounts::::".
+Table 3: leads
+- Name: Projekt 1
+- Firma: IBM
+- Art: AI
+- Verantwortlich: Max Mustermann
+- Gewichteter_Betrag: 10000 CHF
+- Einsatzdauer: 6 Monate
+- Startdatum: 01.01.2023
+- Status: [inaktiv|gewonnen|verloren|gestorben]
 
-Potentiale können zu Organisationen zugeordnet werden, indem das Feld "Organisationsname" in der leads Tabelle mit dem Feld "Organisationsname" in der organizations Tabelle abgeglichen wird, wobei lead.Organisationsname wiederum das Präfix mit "Accounts::::" enthält.
+Die Spalte Firma in den Tabellen leads und people ist ein Schlüssel für organization->Name.
 
 Die Anzahl der Ergebnisse muss auf 50 Zeilen begrenzt werden, wählen Sie nur die für Ihre Abfrage erforderlichen Felder aus.
 Wenn es mehr als 50 Zeilen gibt, sollte die Abfrage eine zusätzliche Informationsmeldung zurückgeben.
