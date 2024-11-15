@@ -17,6 +17,7 @@ def process_organizations(folder_in, folder_out):
         "Klassifizierung Traineeprogramm",
         "Webseite",
         "zuständig",
+        "Branche"
     ]]
     
     organizations_transformed = organizations_transformed.rename(columns={

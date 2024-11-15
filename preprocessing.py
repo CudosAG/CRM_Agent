@@ -33,6 +33,7 @@ Table 2: organizations
 - Klassifizierung_Software:["0 - abklären"|"1 - High Potential"|"2 - Regelmässig Nachfassen"|"3 - Wenig Potential"|"5 - Kein Potential"]
 - Webseite: www.ibm.ch
 - Verantwortlich: koa
+- Branche: Industrie
 
 Table 3: leads
 - Name: Projekt 1

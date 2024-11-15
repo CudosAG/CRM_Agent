@@ -54,6 +54,7 @@ Table 2: organizations
 - Klassifizierung_Software:["0 - abklären"|"1 - High Potential"|"2 - Regelmässig Nachfassen"|"3 - Wenig Potential"|"5 - Kein Potential"]
 - Webseite: www.ibm.ch
 - Verantwortlich: koa
+- Branche: Industrie
 Suche bei den Klassifizierungen immer mit LIKE %0%, %1%, %2%, %3% etc.
 
 Table 3: leads
