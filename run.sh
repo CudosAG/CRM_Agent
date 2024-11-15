@@ -2,7 +2,7 @@
 
 # Setze den Projektordner auf das aktuelle Verzeichnis
 PROJECT_PATH=$(pwd)
-PROJECT_PATH=/root/RetosTools/RolXService
+PROJECT_PATH=/root/CRM_Agent
 
 echo "$PROJECT_PATH/venv"
 cd $PROJECT_PATH
