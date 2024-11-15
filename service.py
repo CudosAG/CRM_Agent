@@ -61,6 +61,12 @@ def plain_text_query():
     except Exception as e:
         return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
     
+@app.route('/testlogs', methods=['GET'])
+def serve_test_logs():
+    with open('test_cases.log', 'r') as f:
+        return f.read(), 200
+
+
 # Catch-All Route
 @app.route('/<path:subpath>', methods=['GET'])
 def catch_all(subpath):
