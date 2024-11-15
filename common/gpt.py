@@ -1,3 +1,4 @@
+from tools import Tools
 from .gpt_openai import get_single_completion_openai, get_vector_openai, get_completion_openai
 from .gpt_azure import get_single_completion_azure, get_completion_azure, get_vector_azure
 from .settings import USE_AZURE
@@ -29,7 +30,7 @@ def get_vector(text):
     else:
         return get_vector_openai(text)
     
-def get_completion_with_tools(messages, tools):
+def get_completion_with_tools(messages, tools: Tools, request_id: str = None):
     try:
         completion = get_completion(messages=messages, tools=tools.get_tools())
         message = completion.choices[0].message
@@ -38,7 +39,7 @@ def get_completion_with_tools(messages, tools):
         tool_calls = message.tool_calls
         while tool_calls:
             for tool_call in tool_calls:
-                tools.handle_tool_call(tool_call, messages)
+                tools.handle_tool_call(tool_call, messages, request_id)
             completion = get_completion(messages=messages, tools=tools.get_tools())
             message = completion.choices[0].message
             tool_calls = message.tool_calls
