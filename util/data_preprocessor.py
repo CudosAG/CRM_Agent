@@ -1,5 +1,6 @@
 import argparse
 import pandas as pd
+import re
 
 def process_organizations(folder_in, folder_out):
     organizations = pd.read_csv(folder_in + "/Organisationen.csv")
@@ -24,12 +25,18 @@ def process_organizations(folder_in, folder_out):
         "Umsatz (MIO CHF)": "UmsatzInMio",
         "Klassifizierung Softwareentwicklung und -testing ": "Klassifizierung_Software",
         "Klassifizierung Prüfsysteme": "Klassifizierung_Pruefsysteme",
-        "Klassifiierung AI (Künstliche Intelligenz)": "Klassifizierung_AI",
-        "Klassifizierung Trainerprogramm": "Klassifizierung_Cudos_Trail",
+        "Klassifizierung AI (Künstliche Intelligenz)": "Klassifizierung_AI",
+        "Klassifizierung Traineeprogramm": "Klassifizierung_Cudos_Trail",
         "Mitarbeiter": "Groesse"
     })
     
     organizations_transformed['Adresse'] = organizations['Rechnungsadresse'] + ", " + organizations['Rechnung PLZ'] + " " + organizations['Rechnung Ort'] + ", " +  organizations['Rechnung Land']
+    
+    klassifizierung_pattern = re.compile(r'(\d) - .*')
+    organizations_transformed['Klassifizierung_Software'] = organizations_transformed['Klassifizierung_Software'].str.replace(klassifizierung_pattern, r'\1', regex=True)
+    organizations_transformed['Klassifizierung_Pruefsysteme'] = organizations_transformed['Klassifizierung_Pruefsysteme'].str.replace(klassifizierung_pattern, r'\1', regex=True)
+    organizations_transformed['Klassifizierung_AI'] = organizations_transformed['Klassifizierung_AI'].str.replace(klassifizierung_pattern, r'\1', regex=True)
+    organizations_transformed['Klassifizierung_Cudos_Trail'] = organizations_transformed['Klassifizierung_Cudos_Trail'].str.replace(klassifizierung_pattern, r'\1', regex=True)
         
     organizations_transformed.to_csv(folder_out + "/Organisationen.csv", index=False)
     
