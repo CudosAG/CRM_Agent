@@ -43,6 +43,24 @@ Table 3: leads
 - Status: [inaktiv|gewonnen|verloren|gestorben]
  
 Formuliere die Anfrage so um, dass sie auf die oben genannte Struktur passt, wobei "Firma" in leads und people ein Schlüssel für organization->Name ist.
+
+Beispiel:
+
+*Originaler Prompt:*
+Bei welchen Organisationen ist ein CTO erfasst?
+
+*Bereinigter Prompt:*
+
+Aufgabe: Suche nach Organisationen, bei denen ein CTO in der Tabelle `people` erfasst ist und gib Name und Ort der Firma zurück. 
+Dabei wird die `Firma` in der Tabelle `people` als Schlüssel für den `Name` in der Tabelle `organization` verwendet.
+
+Filterkriterien und Vorgehen:
+- `Position` in `people` muss wie "%CTO%" sein.
+- `Firma` in `people` ist ein Schlüssel für `organization->Name`.
+- Gebe den `Name` und die `Adresse` der Firma zurück, die den CTO erfasst hat.
+
+---- 
+HALTE DICH KURZ und PRÄZISE, GIB NUR DEN BEREINGTEN PROMPT mit Aufgabe, Filterkriterien und Vorgehen zurück.
 '''
 
 def preprocess(prompt):
@@ -51,4 +69,12 @@ def preprocess(prompt):
 
 
 if __name__ == '__main__':
-    preprocess("Wie viele Firmen gibt es in Fahrweid")
+    fragen = [
+        "Wie viele Firmen gibt es in Fahrweid", 
+        "Welche Firmen gibt es in Fahrweid", 
+        "Bei welchen Organisationen ist ein CTO erfasst?"
+    ]
+    for frage in fragen:
+        print("Original: "+frage)
+        print(preprocess(frage)+"\n")
+    
