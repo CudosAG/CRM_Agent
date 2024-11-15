@@ -13,7 +13,7 @@ load_dotenv()
 import logging
 
 # Create a file handler that logs to a file
-file_handler = logging.FileHandler('crm.log', mode='w')
+file_handler = logging.FileHandler('crm.log', mode='a')
 file_handler.setLevel(logging.INFO)
 
 # Create a console handler that logs to the terminal

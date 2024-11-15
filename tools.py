@@ -79,8 +79,6 @@ If there are more than 50 rows, the query should return an additional informatio
             error = str(e)
             print("Error: ", e)
 
-        print("Calling function: ", function_name, " with args: ", function_args)
-
         logging.info(f"{request_id} Calling function: {function_name} with args: {function_args}")
         function_response = self.call_function(function_name, function_to_call, function_args)
         
