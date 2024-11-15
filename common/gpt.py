@@ -1,6 +1,6 @@
-from gpt_openai import get_single_completion_openai, get_vector_openai, get_completion_openai
-from gpt_azure import get_single_completion_azure, get_completion_azure, get_vector_azure
-from settings import USE_AZURE
+from .gpt_openai import get_single_completion_openai, get_vector_openai, get_completion_openai
+from .gpt_azure import get_single_completion_azure, get_completion_azure, get_vector_azure
+from .settings import USE_AZURE
 
 def get_single_completion(prompt):
     try:

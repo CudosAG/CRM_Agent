@@ -1,6 +1,6 @@
 from openai import OpenAI
 import os
-from settings import CHAT_MODEL, EMBEDDINGS_MODEL
+from .settings import CHAT_MODEL, EMBEDDINGS_MODEL
 
 def check_key():
     api_key = os.getenv('OPENAI_API_KEY')
