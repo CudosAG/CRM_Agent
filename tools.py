@@ -1,4 +1,5 @@
 import json
+import logging
 from crm_logging import test_case_logger
 from crm import Crm
 
@@ -10,6 +11,7 @@ class Tools:
         try:
             result = self.crm.get_data(sql_query) 
         except Exception as e:
+            logging.error("Error in get_crm_data: "+str(e))
             return json.dumps({"error": str(e)})
         
         return result
