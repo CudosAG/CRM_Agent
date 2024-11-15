@@ -23,8 +23,8 @@ Table 1: people
 Table 2: organization
 - Name: IBM
 - Adresse: Wesstrasse 3, 8000 Zürich, Schweiz
-- DistanzZH: 5km
-- DistanzChur: 90km
+- DistanzZH: 5
+- DistanzChur: 90
 - Groesse: 5000 Mitarbeiter
 - Umsatz: 5Mio CHF
 - Klassifizierung_Cudos_Trail: [0 - abklären|1 - High Potential|2 - Regelmässig Nachfassen|3 - Wenig Potential|5 - Kein Potential]  
