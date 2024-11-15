@@ -8,7 +8,7 @@ load_dotenv()
 sys.path.append('common')
 from common.gpt import get_single_completion # type: ignore
 
-#BASE_URL = 'http://localhost:6000/crm'
+BASE_URL = 'http://localhost:6000/crm'
 BASE_URL = 'https://baettig.org/crm'
 SQL_URL = BASE_URL+'/sqlquery'
 PLAIN_URL = BASE_URL+'/query'
@@ -104,10 +104,10 @@ def test_todo(test):
         return None  
     
 if __name__ == '__main__':
-    for test in tests_crm:
-        print(test["question"])
-        ans = test_ai(test)
-        print(ans)
+    # for test in tests_crm:
+    #     print(test["question"])
+    #     ans = test_ai(test)
+    #     print(ans)
     for test in tests_todo:
         print(test["question"])
         ans = test_todo(test)
