@@ -9,7 +9,7 @@ sys.path.append('common')
 from common.gpt import get_single_completion # type: ignore
 
 BASE_URL = 'http://localhost:6000/crm'
-#BASE_URL = 'https://baettig.org/crm'
+BASE_URL = 'https://baettig.org/crm'
 SQL_URL = BASE_URL+'/sqlquery'
 PLAIN_URL = BASE_URL+'/query'
 
@@ -25,7 +25,7 @@ tests = [ { "question":"wieviele einträge hat es in der tabelle organizations?"
             "test":"Enthält die Antwort CUDOS AG, Antworte NUR mit 'JA' oder 'NEIN'."
           },
           
-          { "question":"Bei welchen Organisationen ist ein CTO erfasst?",
+          { "question":"Bei welchen Organisationen ist ein CTO erfasst? Gib mir auch NAme/Vorname zurück",
             "test":"Enthält die Antwort eine Liste von Organisationen? Antworte NUR mit 'JA' oder 'NEIN'."
           },
           

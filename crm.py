@@ -3,6 +3,8 @@ from pandasql import sqldf
 import logging
 import json
 
+MAX_ANSWER_LENGTH = 20000
+
 class Crm():
     __instance = None
     organiziations = None
@@ -43,6 +45,10 @@ class Crm():
             return json.dumps({"error": str(e)})
         
         result = result.to_markdown(index=False)
+        if len(result) > MAX_ANSWER_LENGTH:
+            print("Maximale Länge überschritten")
+            result = result[:MAX_ANSWER_LENGTH]
+            result = result + "\n... (truncated)"
         
         print("Query result: "+result)
 
