@@ -28,7 +28,7 @@ class Crm():
         print("Loading data...")
         self.__load_organization_data()
         self.__load_lead_data()
-        self.__load_people_data
+        self.__load_people_data()
         print("...data successfully loaded")
         
     def get_data(self, sql_query):
