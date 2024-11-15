@@ -67,6 +67,8 @@ Table 3: leads
 
 Die Spalte Firma in den Tabellen leads und people ist ein Schlüssel für organizations->Name.
 
+Verwende bei string-suchen wo immer möglich LIKE %...% und ignoriere Gross/Kleinschreibung.
+
 Die Anzahl der Ergebnisse muss auf 50 Zeilen begrenzt werden, wählen Sie nur die für Ihre Abfrage erforderlichen Felder aus.
 Wenn es mehr als 50 Zeilen gibt, sollte die Abfrage eine zusätzliche Informationsmeldung zurückgeben.
 """,
