@@ -33,11 +33,11 @@ def query_is_dangerous(query):
     return False
     
 
-@app.route('/rolx', methods=['GET'])
+@app.route('/crm', methods=['GET'])
 def test():
     return OPENAPI_DEF, 200
 
-@app.route('/rolx/query', methods=['GET'])
+@app.route('/crm/query', methods=['GET'])
 def plain_text_query():
     # Prüfen, ob der Authorization-Header vorhanden ist und dem geheimen Token entspricht
     auth_header = request.headers.get('Authorization')
@@ -59,7 +59,7 @@ def plain_text_query():
     except Exception as e:
         return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
 
-@app.route('/rolx/sqlquery', methods=['GET'])
+@app.route('/crm/sqlquery', methods=['GET'])
 def get_data():
     # Prüfen, ob der Authorization-Header vorhanden ist und dem geheimen Token entspricht
     auth_header = request.headers.get('Authorization')

@@ -9,8 +9,8 @@ from gpt import get_single_completion # type: ignore
 
 
 class APITestCase(unittest.TestCase):
-    BASE_URL = 'http://localhost:6000/rolx'
-    #BASE_URL = 'http://baettig.org/rolx'
+    BASE_URL = 'http://localhost:6000/crm'
+    #BASE_URL = 'http://baettig.org/crm'
     SQL_URL = BASE_URL+'/sqlquery'
     PLAIN_URL = BASE_URL+'/query'
     
