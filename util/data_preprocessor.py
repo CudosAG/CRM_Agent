@@ -32,11 +32,11 @@ def process_organizations(folder_in, folder_out):
     
     organizations_transformed['Adresse'] = organizations['Rechnungsadresse'] + ", " + organizations['Rechnung PLZ'] + " " + organizations['Rechnung Ort'] + ", " +  organizations['Rechnung Land']
     
-    klassifizierung_pattern = re.compile(r'(\d) - .*')
-    organizations_transformed['Klassifizierung_Software'] = organizations_transformed['Klassifizierung_Software'].str.replace(klassifizierung_pattern, r'\1', regex=True)
-    organizations_transformed['Klassifizierung_Pruefsysteme'] = organizations_transformed['Klassifizierung_Pruefsysteme'].str.replace(klassifizierung_pattern, r'\1', regex=True)
-    organizations_transformed['Klassifizierung_AI'] = organizations_transformed['Klassifizierung_AI'].str.replace(klassifizierung_pattern, r'\1', regex=True)
-    organizations_transformed['Klassifizierung_Cudos_Trail'] = organizations_transformed['Klassifizierung_Cudos_Trail'].str.replace(klassifizierung_pattern, r'\1', regex=True)
+    # klassifizierung_pattern = re.compile(r'(\d) - .*')
+    # organizations_transformed['Klassifizierung_Software'] = organizations_transformed['Klassifizierung_Software'].str.replace(klassifizierung_pattern, r'\1', regex=True)
+    # organizations_transformed['Klassifizierung_Pruefsysteme'] = organizations_transformed['Klassifizierung_Pruefsysteme'].str.replace(klassifizierung_pattern, r'\1', regex=True)
+    # organizations_transformed['Klassifizierung_AI'] = organizations_transformed['Klassifizierung_AI'].str.replace(klassifizierung_pattern, r'\1', regex=True)
+    # organizations_transformed['Klassifizierung_Cudos_Trail'] = organizations_transformed['Klassifizierung_Cudos_Trail'].str.replace(klassifizierung_pattern, r'\1', regex=True)
         
     organizations_transformed.to_csv(folder_out + "/Organisationen.csv", index=False)
     
@@ -87,7 +87,8 @@ def process_people(folder_in, folder_out):
         "primäre E-Mail": "Email",
         "Department / Business Unit": "Abteilung",
         "Organisation": "Firma",
-        "Hat Unternehmen verlassen": "HatFirmaVerlassen"
+        "Hat Unternehmen verlassen": "HatFirmaVerlassen",
+        "Nachname": "Name"
     })
     
     people_transformed['Telefon'] = people['Telefon Büro'] + " / " + people['mobiles Telefon']

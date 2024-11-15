@@ -45,6 +45,8 @@ Table 3: leads
  
 Formuliere die Anfrage so um, dass sie auf die oben genannte Struktur passt, wobei "Firma" in leads und people ein Schlüssel für organizations->Name ist.
 
+leads.Art ist ein Schlüssel für organizations->Klassifizierung_AI (Wert "AI (Künstliche Intelligenz)"), organizations->Klassifizierung_Pruefsyseme ("Prüfsystem"), organizations->Klassifizierung_Software ("Software Engineering"), organizations->Klassifizierung_Cudos_Trail (Cudos Trail). 
+
 Beispiel:
 
 *Originaler Prompt:*
