@@ -47,11 +47,12 @@ Table 2: organizations
 - DistanzZH: 5km
 - DistanzChur: 90km
 - Groesse: 5000 Mitarbeiter
-- Umsatz: 5Mio CHF
+- UmsatzInMio: 5Mio CHF
 - Klassifizierung_Cudos_Trail: [0 - abklären|1 - High Potential|2 - Regelmässig Nachfassen|3 - Wenig Potential|5 - Kein Potential]  
 - Klassifizierung_Pruefsyseme: 1 - High Potential
 - Klassifizierung_AI: 1 - High Potential
 - Klassifizierung_Software: 3 - Wenig Potential
+- Webseite: www.ibm.ch
 
 Table 3: leads
 - Name: Projekt 1

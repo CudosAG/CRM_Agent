@@ -14,17 +14,18 @@ def process_organizations(folder_in, folder_out):
         "Klassifizierung Prüfsysteme",
         "Klassifizierung AI (Künstliche Intelligenz)",
         "Klassifizierung Traineeprogramm",
+        "Webseite",
     ]]
     
     organizations_transformed = organizations_transformed.rename(columns={
         "Organisationsname": "Name",
         "Distanz ZH (km)": "DistanzZH",
         "Distanz Chur (km)": "DistanzChur",
-        "Umsatz (MIO CHF)": "Umsatz",
+        "Umsatz (MIO CHF)": "UmsatzInMio",
         "Klassifizierung Softwareentwicklung und -testing ": "Klassifizierung_Software",
         "Klassifizierung Prüfsysteme": "Klassifizierung_Pruefsysteme",
         "Klassifiierung AI (Künstliche Intelligenz)": "Klassifizierung_AI",
-        "Klassifizierung Trainerprogramm": "Klassifizierung_Traineeprogramm",
+        "Klassifizierung Trainerprogramm": "Klassifizierung_Cudos_Trail",
         "Mitarbeiter": "Groesse"
     })
     
