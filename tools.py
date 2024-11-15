@@ -39,6 +39,8 @@ Anrede,Vorname,Nachname,"Personen Nr.",Organisation,"Akad. Titel","Telefon Büro
 You can tell which persons belong to which organization by matching the "Organisation" field in the people table with the "Organisationsname" field in the organizations table. The "Organisation" field contains the "Organisationsname" prefixed with "Accounts::::".
 
 Leads can be matched to Organizations by matching the "Organisationsname" field in the leads table with the "Organisationsname" field in the organizations table where lead.Organisationsname again contains the prefix with "Accounts::::".
+The number of results has to be limited to 50 rows, only select the necessary fields for your query. 
+If there are more than 50 rows, the query should return an additional information message.
 """,
                             }
                         },
