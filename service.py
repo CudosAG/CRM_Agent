@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 from crm import Crm
 from tools import Tools
 from openapi_def import OPENAPI_DEF
-
+from preprocessing import preprocess
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -65,6 +65,8 @@ def plain_text_query():
     try:
         request_id = str(uuid.uuid4())
         logging.info(f"{request_id} Received query: {query}")
+        query = preprocess(query)
+        logging.info(f"{request_id} Preprocessed query: {query}")
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools, request_id)
         if is_valid_json(result):
