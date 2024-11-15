@@ -66,6 +66,7 @@ HALTE DICH KURZ und PRÄZISE, GIB NUR DEN BEREINGTEN PROMPT mit Aufgabe, Filterk
 
 def preprocess(prompt):
     ans = get_single_completion(PROMPT+"\n---\n"+prompt)
+    print("\nBereinigter Prompt: "+ans)
     return ans
 
 
