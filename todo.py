@@ -18,9 +18,14 @@ class Todo:
         self.todos.to_csv(self.filename, index=False)
 
     def add_todo(self, name, firma, notiz, deadline):
-        new_todo = pd.DataFrame({'Name': [name], 'Firma': [firma], 'Notiz': [notiz], 'Deadline': [deadline]})
-        self.todos = pd.concat([self.todos, new_todo], ignore_index=True)
-        self.save_todos()
+        try:
+            new_todo = pd.DataFrame({'Name': [name], 'Firma': [firma], 'Notiz': [notiz], 'Deadline': [deadline]})
+            self.todos = pd.concat([self.todos, new_todo], ignore_index=True)
+            self.save_todos()
+            return("To-Do erfolgreich hinzugefügt.")
+        except Exception as e:
+            print("Fehler beim Hinzufügen des To-Dos: "+str(e))
+            return("Fehler beim Hinzufügen des To-Dos: "+str(e))
 
     def edit_todo(self, index, name=None, firma=None, notiz=None, deadline=None):
         if name is not None:
@@ -34,11 +39,23 @@ class Todo:
         self.save_todos()
 
     def delete_todo(self, index):
-        self.todos = self.todos.drop(index).reset_index(drop=True)
-        self.save_todos()
+        try:
+            # Wandle index in eine zahl um
+            index = int(index)
+            # Überprüfen, ob der Index im DataFrame vorhanden ist
+            if index >= 0 and index < len(self.todos):
+                self.todos = self.todos.drop(self.todos.index[index]).reset_index(drop=True)
+                self.save_todos()
+                return "To-Do erfolgreich gelöscht."
+            else:
+                return f"Index {index} existiert nicht."
+        except Exception as e:
+            print("Fehler beim Löschen des To-Dos: "+str(e))
+            return("Fehler beim Löschen des To-Dos: "+str(e))
 
     def query_todos(self, query):
-        return psql.sqldf(query, locals())
+        print("Executing query: "+query)
+        return psql.sqldf(query, self.__dict__)
 
     def display_todos(self):
         print("\nAktuelle To-Do-Liste:")
