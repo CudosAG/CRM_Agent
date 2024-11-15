@@ -1,5 +1,5 @@
 import json
-import logging
+from crm_logging import test_case_logger
 from crm import Crm
 
 class Tools:
@@ -27,21 +27,22 @@ class Tools:
                             "query": {
                                 "type": "string",
                                 "description": """
-Perform SQL queries on the database. There are three tables available: leads, organizations, and people. 
-The organizations table has the following fields:
+Führe SQL Queries auf der Datenbank aus. Die Datenbank enthält Informationen über Organisationen, Leads und Personen. Die Tabellen sind wie folgt aufgebaut:
+Die Tabelle organizations hat folgende Felder:
 Organisationsname,Webseite,"Umsatz (MIO CHF)","Distanz ZH (km)",zuständig,"Distanz Chur (km)","primäre E-Mail",Branche,Rechnungsadresse,"Rechnung PLZ","Rechnung Postfach","Rechnung Ort","Rechnung Land","Klassifizierung Softwareentwicklung und -testing ","Klassifizierung Prüfsysteme","Klassifizierung AI (Künstliche Intelligenz)","Klassifizierung Azure","Klassifizierung Traineeprogramm","Klassifizierung swissICT Booster 50+",Typ,Beschreibung,Unternehmenszweck,Verwaltungsrat,Zeichnungsberechtigte,Kundenart"
 
-The leads table has the following fields:
+Die Tabelle leads hat folgende Felder:
 Potentialname,"Potential Nr.",Organisationsname,Art,Personename,zuständig,Verkaufskanal,erstellt,Kampagne,geändert,"aus Lead erstellt",BU,Projektnummer,"Betrag Engineering",Wahrscheinlichkeit,"Betrag Material","Gewichteter Betrag Engineering","Einsatzdauer (Mt.)","Betrag Externe",Identifiziert,Offeriert,Geschlossen,"Grund Verloren","Potential Abschluss",Endstatus,"Voraussichtliches Startdatum"
 
-The people table has the following fields:
+Der Tabelle people hat folgende Felder:
 Anrede,Vorname,Nachname,"Personen Nr.",Organisation,"Akad. Titel","Telefon Büro",Position,"mobiles Telefon","Job Level","Department / Business Unit","primäre E-Mail",zuständig,erstellt,"Hat Unternehmen verlassen","aus Lead erstellt","Info Unternehmen verlassen",geändert,Straße,PLZ,Postfach,Ort,Land,Beschreibung,"Letter Language",Newsletter/E-Mail,"Typ Zusammenarbeit","Grund Newsletter/E-Mail Nein","Trainee-Programm vorgestellt","HR Bulletin",Kontakthistorie,"Blog abonniert?",Weihnachtsgeschenke,Trainee-Newsletter,Überbringer,Task/Kampagne,Task-Status,"*Grund für Absage","Wiedervorlage Datum","Fall geschlossen"
 
-You can tell which persons belong to which organization by matching the "Organisation" field in the people table with the "Organisationsname" field in the organizations table. The "Organisation" field contains the "Organisationsname" prefixed with "Accounts::::".
+Die Tabellen organization und people sind über das Feld "Organisation" in der people Tabelle verknüpft. Das Feld "Organisation" enthält den Namen der Organisation mit dem Präfix "Accounts::::".
 
-Leads can be matched to Organizations by matching the "Organisationsname" field in the leads table with the "Organisationsname" field in the organizations table where lead.Organisationsname again contains the prefix with "Accounts::::".
-The number of results has to be limited to 50 rows, only select the necessary fields for your query. 
-If there are more than 50 rows, the query should return an additional information message.
+Potentiale können zu Organisationen zugeordnet werden, indem das Feld "Organisationsname" in der leads Tabelle mit dem Feld "Organisationsname" in der organizations Tabelle abgeglichen wird, wobei lead.Organisationsname wiederum das Präfix mit "Accounts::::" enthält.
+
+Die Anzahl der Ergebnisse muss auf 50 Zeilen begrenzt werden, wählen Sie nur die für Ihre Abfrage erforderlichen Felder aus.
+Wenn es mehr als 50 Zeilen gibt, sollte die Abfrage eine zusätzliche Informationsmeldung zurückgeben.
 """,
                             }
                         },
@@ -79,7 +80,7 @@ If there are more than 50 rows, the query should return an additional informatio
             error = str(e)
             print("Error: ", e)
 
-        logging.info(f"{request_id} Calling function: {function_name} with args: {function_args}")
+        test_case_logger.info(f"{request_id} Calling function: {function_name} with args: {function_args}")
         function_response = self.call_function(function_name, function_to_call, function_args)
         
         messages.append(

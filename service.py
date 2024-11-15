@@ -10,22 +10,7 @@ from preprocessing import preprocess
 from dotenv import load_dotenv
 load_dotenv()
 
-import logging
-
-# Create a file handler that logs to a file
-file_handler = logging.FileHandler('crm.log', mode='w')
-file_handler.setLevel(logging.INFO)
-
-# Create a console handler that logs to the terminal
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-
-# Configure the logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[file_handler, console_handler]
-)
+from crm_logging import test_case_logger
 
 from common.gpt import get_completion_with_tools, get_single_completion # type: ignore
 
@@ -64,9 +49,9 @@ def plain_text_query():
 
     try:
         request_id = str(uuid.uuid4())
-        logging.info(f"{request_id} Received query: {query}")
+        test_case_logger.info(f"{request_id} Received query: {query}")
         query = preprocess(query)
-        logging.info(f"{request_id} Preprocessed query: {query}")
+        test_case_logger.info(f"{request_id} Preprocessed query: {query}")
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools, request_id)
         if is_valid_json(result):
