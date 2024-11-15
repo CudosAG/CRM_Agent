@@ -54,6 +54,7 @@ def plain_text_query():
         test_case_logger.info(f"{request_id} Preprocessed query: {query}")
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools, request_id)
+        test_case_logger.information(f"{request_id} Final response: {result}")
         if is_valid_json(result):
             return result, 200
         else:
