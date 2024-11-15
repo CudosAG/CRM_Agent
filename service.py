@@ -12,12 +12,19 @@ load_dotenv()
 
 import logging
 
+# Create a file handler that logs to a file
+file_handler = logging.FileHandler('crm.log', mode='w')
+file_handler.setLevel(logging.INFO)
+
+# Create a console handler that logs to the terminal
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+
 # Configure the logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='crm.log',
-    filemode='w'
+    handlers=[file_handler, console_handler]
 )
 
 from common.gpt import get_completion_with_tools, get_single_completion # type: ignore
