@@ -35,6 +35,10 @@ Potentialname,"Potential Nr.",Organisationsname,Art,Personename,zuständig,Verka
 
 The people table has the following fields:
 Anrede,Vorname,Nachname,"Personen Nr.",Organisation,"Akad. Titel","Telefon Büro",Position,"mobiles Telefon","Job Level","Department / Business Unit","primäre E-Mail",zuständig,erstellt,"Hat Unternehmen verlassen","aus Lead erstellt","Info Unternehmen verlassen",geändert,Straße,PLZ,Postfach,Ort,Land,Beschreibung,"Letter Language",Newsletter/E-Mail,"Typ Zusammenarbeit","Grund Newsletter/E-Mail Nein","Trainee-Programm vorgestellt","HR Bulletin",Kontakthistorie,"Blog abonniert?",Weihnachtsgeschenke,Trainee-Newsletter,Überbringer,Task/Kampagne,Task-Status,"*Grund für Absage","Wiedervorlage Datum","Fall geschlossen"
+
+You can tell which persons belong to which organization by matching the "Organisation" field in the people table with the "Organisationsname" field in the organizations table. The "Organisation" field contains the "Organisationsname" prefixed with "Accounts::::".
+
+Leads can be matched to Organizations by matching the "Organisationsname" field in the leads table with the "Organisationsname" field in the organizations table where lead.Organisationsname again contains the prefix with "Accounts::::".
 """,
                             }
                         },
