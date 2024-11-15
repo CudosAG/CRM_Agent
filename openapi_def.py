@@ -14,7 +14,7 @@ OPENAPI_DEF = """
   "paths": {
     "/crm/sqlquery": {
       "get": {
-        "description": "Get timesheet data",
+        "description": "Query the crm database",
         "operationId": "SQLQuery",
     
         "parameters": [
