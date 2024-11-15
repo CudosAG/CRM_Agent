@@ -43,7 +43,7 @@ Table 3: leads
 - Gewichteter_Betrag: 10000 CHF
 - Einsatzdauer: 6 Monate
 - Startdatum: 01.01.2023
-- Status: [inaktiv|Closed Won|Closed Lost|gestorben|] (wenn leer, dann ist das Potential offen und aktiv)
+- Status: [inaktiv|Closed Won|Closed Lost|gestorben|] (wenn NULL, dann ist das Potential offen und aktiv)
  
 Formuliere die Anfrage so um, dass sie auf die oben genannte Struktur passt, wobei "Firma" in leads und people ein Schlüssel für organizations->Name ist.
 

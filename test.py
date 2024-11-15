@@ -66,7 +66,10 @@ tests_crm = [
         #   { "question":"Bei welchen Organisationen im Umkreis <10km um Zürich ist ein CTO erfasst? Gib mir auch NAme/Vorname zurück",
         #    "test":"Enthält die Antwort eine Liste von Organisationen? Antworte NUR mit 'JA' oder 'NEIN'."
         #  },        
-           { "question":"Welche offenen potentiale mit startdatum < 31.12.24 gibt es?",
+        # { "question":"Welche offenen potentiale mit startdatum < 31.12.24 gibt es?",
+        #    "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
+        # },
+         { "question":"Welche offenen potentiale gibt es?",
            "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
          },        
 ]
