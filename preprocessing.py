@@ -20,7 +20,7 @@ Table 1: people
 - Abteilung: F&E
 - HatFirmaVerlassen: Ja
 
-Table 2: organization
+Table 2: organizations
 - Name: IBM
 - Adresse: Wesstrasse 3, 8000 Zürich, Schweiz
 - DistanzZH: 5
@@ -42,7 +42,7 @@ Table 3: leads
 - Startdatum: 01.01.2023
 - Status: [inaktiv|Closed Won|Closed Lost|gestorben]
  
-Formuliere die Anfrage so um, dass sie auf die oben genannte Struktur passt, wobei "Firma" in leads und people ein Schlüssel für organization->Name ist.
+Formuliere die Anfrage so um, dass sie auf die oben genannte Struktur passt, wobei "Firma" in leads und people ein Schlüssel für organizations->Name ist.
 
 Beispiel:
 
@@ -52,11 +52,11 @@ Bei welchen Organisationen ist ein CTO erfasst?
 *Bereinigter Prompt:*
 
 Aufgabe: Suche nach Organisationen, bei denen ein CTO in der Tabelle `people` erfasst ist und gib Name und Ort der Firma zurück. 
-Dabei wird die `Firma` in der Tabelle `people` als Schlüssel für den `Name` in der Tabelle `organization` verwendet.
+Dabei wird die `Firma` in der Tabelle `people` als Schlüssel für den `Name` in der Tabelle `organizations` verwendet.
 
 Filterkriterien und Vorgehen:
 - `Position` in `people` muss wie "%CTO%" sein.
-- `Firma` in `people` ist ein Schlüssel für `organization->Name`.
+- `Firma` in `people` ist ein Schlüssel für `organizations->Name`.
 - Gebe den `Name` und die `Adresse` der Firma zurück, die den CTO erfasst hat.
 
 ---- 
