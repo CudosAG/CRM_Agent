@@ -44,15 +44,16 @@ Table 1: people
 Table 2: organizations
 - Name: IBM
 - Adresse: Wesstrasse 3, 8000 Zürich, Schweiz
-- DistanzZH: 5km
-- DistanzChur: 90km
+- DistanzZH: 5
+- DistanzChur: 90
 - Groesse: 5000 Mitarbeiter
 - UmsatzInMio: 5Mio CHF
-- Klassifizierung_Cudos_Trail: [0 - abklären|1 - High Potential|2 - Regelmässig Nachfassen|3 - Wenig Potential|5 - Kein Potential]  
-- Klassifizierung_Pruefsyseme: 1 - High Potential
-- Klassifizierung_AI: 1 - High Potential
-- Klassifizierung_Software: 3 - Wenig Potential
+- Klassifizierung_Cudos_Trail: ["0 - abklären"|"1 - Kunde"|"2 - ex Kunde"|"3 - Potentieller Kunde"|"4 - Kein Interesse"|"5 - Keine SW/Kein Potential"|"6 - interessiert - zu weit entfernt"]
+- Klassifizierung_Pruefsyseme: ["0 - abklären"|"1 - High Potential"|"2 - Regelmässig Nachfassen"|"3 - Wenig Potential"|"5 - Kein Potential"]
+- Klassifizierung_AI: ["0 - abklären"|"1 - High Potential"|"2 - Regelmässig Nachfassen"|"3 - Wenig Potential"|"5 - Kein Potential"]
+- Klassifizierung_Software:["0 - abklären"|"1 - High Potential"|"2 - Regelmässig Nachfassen"|"3 - Wenig Potential"|"5 - Kein Potential"]
 - Webseite: www.ibm.ch
+Suche bei den Klassifizierungen immer mit LIKE %0%, %1%, %2%, %3% etc.
 
 Table 3: leads
 - Name: Projekt 1
