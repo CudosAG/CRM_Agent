@@ -11,7 +11,7 @@ class Todo:
             todos = pd.read_csv(self.filename)
         except FileNotFoundError:
             # Wenn die Datei nicht existiert, erstelle ein leeres DataFrame
-            todos = pd.DataFrame(columns=['Name', 'Firma', 'Notiz', 'Deadline'])
+            todos = pd.DataFrame(columns=['Id', 'Name', 'Firma', 'Notiz', 'Deadline'])
         return todos
 
     def save_todos(self):
@@ -19,7 +19,10 @@ class Todo:
 
     def add_todo(self, name, firma, notiz, deadline):
         try:
-            new_todo = pd.DataFrame({'Name': [name], 'Firma': [firma], 'Notiz': [notiz], 'Deadline': [deadline]})
+            next_id = self.todos['Id'].max() + 1
+            if pd.isna(next_id):
+                next_id = 1
+            new_todo = pd.DataFrame({'Id': [next_id], 'Name': [name], 'Firma': [firma], 'Notiz': [notiz], 'Deadline': [deadline]})
             self.todos = pd.concat([self.todos, new_todo], ignore_index=True)
             self.save_todos()
             return("To-Do erfolgreich hinzugefügt.")
@@ -27,7 +30,8 @@ class Todo:
             print("Fehler beim Hinzufügen des To-Dos: "+str(e))
             return("Fehler beim Hinzufügen des To-Dos: "+str(e))
 
-    def edit_todo(self, index, name=None, firma=None, notiz=None, deadline=None):
+    def edit_todo(self, id, name=None, firma=None, notiz=None, deadline=None):
+        index = self.todos[self.todos['Id'] == id].index[0]
         if name is not None:
             self.todos.at[index, 'Name'] = name
         if firma is not None:
@@ -38,10 +42,9 @@ class Todo:
             self.todos.at[index, 'Deadline'] = deadline
         self.save_todos()
 
-    def delete_todo(self, index):
+    def delete_todo(self, id):
+        index = self.todos[self.todos['Id'] == id].index[0]
         try:
-            # Wandle index in eine zahl um
-            index = int(index)
             # Überprüfen, ob der Index im DataFrame vorhanden ist
             if index >= 0 and index < len(self.todos):
                 self.todos = self.todos.drop(self.todos.index[index]).reset_index(drop=True)
