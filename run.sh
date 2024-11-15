@@ -21,5 +21,5 @@ source venv/bin/activate
 
 source ~/setkeys.sh
 
-python service.py
+python service.py &> output.log
 
