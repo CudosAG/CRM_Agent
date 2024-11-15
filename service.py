@@ -34,7 +34,7 @@ def query_is_dangerous(query):
     return False
     
 
-@app.route('/rolx', methods=['GET'])
+@app.route('/crm', methods=['GET'])
 def test():
     return OPENAPI_DEF, 200
 
