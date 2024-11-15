@@ -81,10 +81,10 @@ def todo_query():
 
     try:
         request_id = str(uuid.uuid4())
-        test_case_logger.info(f"{request_id} Received query: {query}")
+        print(f"{request_id} Received Todo query: {query}")
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools_todo, request_id)
-        test_case_logger.info(f"{request_id} Final response: {result}")
+        print(f"{request_id} Final Todo Query response: {result}")
         if is_valid_json(result):
             return result, 200
         else:
