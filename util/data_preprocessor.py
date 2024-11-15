@@ -16,6 +16,7 @@ def process_organizations(folder_in, folder_out):
         "Klassifizierung AI (Künstliche Intelligenz)",
         "Klassifizierung Traineeprogramm",
         "Webseite",
+        "zuständig",
     ]]
     
     organizations_transformed = organizations_transformed.rename(columns={
@@ -27,7 +28,8 @@ def process_organizations(folder_in, folder_out):
         "Klassifizierung Prüfsysteme": "Klassifizierung_Pruefsysteme",
         "Klassifizierung AI (Künstliche Intelligenz)": "Klassifizierung_AI",
         "Klassifizierung Traineeprogramm": "Klassifizierung_Cudos_Trail",
-        "Mitarbeiter": "Groesse"
+        "Mitarbeiter": "Groesse",
+        "zuständig": "Verantwortlich"
     })
     
     organizations_transformed['Adresse'] = organizations['Rechnungsadresse'] + ", " + organizations['Rechnung PLZ'] + " " + organizations['Rechnung Ort'] + ", " +  organizations['Rechnung Land']
