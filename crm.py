@@ -1,5 +1,6 @@
 import pandas as pd
 from pandasql import sqldf
+import logging
 import json
 
 class Crm():
@@ -32,12 +33,15 @@ class Crm():
             if sql_query is None:
                 raise ValueError("No SQL query provided")
             
-            print("Executing query: ", sql_query)
+            logging.info("Executing query: "+sql_query)
             result = sqldf(sql_query, self.__dict__)
         except Exception as e:
             return json.dumps({"error": str(e)})
         
-        result = result.to_json(orient="records")
+        result = result.to_markdown(index=False)
+        
+        logging.info("Query result: "+result)
+
         return result
        
     def __new__(self):
