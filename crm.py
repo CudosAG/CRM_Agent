@@ -6,6 +6,8 @@ import json
 class Crm():
     __instance = None
     organiziations = None
+    leads = None
+    people = None
 
     def __load_organization_data(self):
         print("Loading Organization data...")
