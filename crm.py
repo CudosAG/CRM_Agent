@@ -36,14 +36,15 @@ class Crm():
             if sql_query is None:
                 raise ValueError("No SQL query provided")
             
-            logging.info("Executing query: "+sql_query)
+            print("Executing query: "+sql_query)
             result = sqldf(sql_query, self.__dict__)
         except Exception as e:
+            print("Error in get_data: "+str(e))
             return json.dumps({"error": str(e)})
         
         result = result.to_markdown(index=False)
         
-        logging.info("Query result: "+result)
+        print("Query result: "+result)
 
         return result
        
