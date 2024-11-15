@@ -11,9 +11,20 @@ class Crm():
         self.organizations = pd.read_csv("data/Organisationen.csv")
         print("...Organization data successfully loaded")
         
+    def __load_lead_data(self):
+        print("Loading Lead data...")
+        self.leads = pd.read_csv("data/Potentiale.csv")
+        print("...Lead data successfully loaded")
+        
+    def __load_people_data(self):
+        print("Loading People data...")
+        self.people = pd.read_csv("data/Personen.csv")
+        print("...People data successfully loaded")
+        
     def __load_data(self):
         print("Loading data...")
         self.__load_organization_data()
+        self.__load_lead_data()
         print("...data successfully loaded")
         
     def get_data(self, sql_query):
