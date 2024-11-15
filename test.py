@@ -8,7 +8,9 @@ load_dotenv()
 sys.path.append('common')
 from common.gpt import get_single_completion # type: ignore
 
-BASE_URL = 'http://localhost:6000/crm'
+#BASE_URL = 'http://localhost:6000/crm'
+BASE_URL = 'https://baettig.org/crm'
+SQL_URL = BASE_URL+'/sqlquery'
 PLAIN_URL = BASE_URL+'/query'
 
 RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')

@@ -25,9 +25,16 @@ def is_valid_json(json_string):
         json.loads(json_string)
         return True
     except ValueError:
-        return False    
+        return False
+    
+def query_is_dangerous(query):
+    ans = get_single_completion("Is the following SQL query dangerous? Answer only YES or NO: "+query)
+    if ans.upper() == 'YES':
+        return True
+    return False
+    
 
-@app.route('/schema', methods=['GET'])
+@app.route('/rolx', methods=['GET'])
 def test():
     return OPENAPI_DEF, 200
 

@@ -1,9 +1,9 @@
 [Unit]
-Description=RolX Service
+Description=Crm Service
 After=network.target
 
 [Service]
-ExecStart=/root/RetosTools/RolXService/run.sh
+ExecStart=/root/CRM_Agent/run.sh
 Restart=always
 User=root
 WorkingDirectory=/usr/local/bin
