@@ -65,7 +65,7 @@ Table 3: leads
 - Gewichteter_Betrag: 10000 CHF
 - Einsatzdauer: 6 Monate
 - Startdatum: 01.01.2023
-- Status: [inaktiv|gewonnen|verloren|gestorben]
+- Status: [inaktiv|Closed Won|Closed Lost|gestorben]
 
 Die Spalte Firma in den Tabellen leads und people ist ein Schlüssel für organizations->Name.
 
