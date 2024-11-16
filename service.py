@@ -4,8 +4,10 @@ import uuid
 
 from flask import Flask, request, jsonify
 from crm import Crm
+from moneyhouse import Moneyhouse
 from todo import Todo
 from tools import Tools
+from tools_moneyhouse import ToolsMoneyhouse
 from tools_todo import ToolsTodo
 from openapi_def import OPENAPI_DEF
 from preprocessing import preprocess
@@ -21,6 +23,8 @@ crm = Crm()
 todo = Todo()
 tools = Tools(crm)
 tools_todo = ToolsTodo(todo)
+moneyhouse = Moneyhouse()
+tools_moneyhouse = ToolsMoneyhouse(moneyhouse)
 
 # Laden Sie den geheimen Token aus einer Umgebungsvariable
 RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')
@@ -88,6 +92,32 @@ def todo_query():
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools_todo, request_id)
         print(f"{request_id} Final Todo Query response: {result}")
+        if is_valid_json(result):
+            return result, 200
+        else:
+            return jsonify({"result": result}), 200
+    except Exception as e:
+        return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
+    
+    
+@app.route('/crm/moneyhouse', methods=['GET'])
+def do_moneyhouse():
+    # Prüfen, ob der Authorization-Header vorhanden ist und dem geheimen Token entspricht
+    auth_header = request.headers.get('Authorization')
+    if auth_header != RETOS_API_TOKEN:
+        return jsonify({'message': 'Unauthorized'}), 401
+    
+    query = request.args.get('query')
+    
+    if not query:
+        return jsonify({'message': 'Query parameter is required'}), 400
+
+    try:
+        request_id = str(uuid.uuid4())
+        print(f"Received query: {query}")
+        messages=[{"role": "user", "content": query}]
+        result = get_completion_with_tools(messages, tools_moneyhouse, request_id)
+        print(f"Final response: {result}")
         if is_valid_json(result):
             return result, 200
         else:

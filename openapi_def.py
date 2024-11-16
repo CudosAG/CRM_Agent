@@ -51,6 +51,24 @@ Always limit the number of answers to 20 entries",
             ],
             "deprecated":false
          }
+      },
+      "/crm/moneyhouse":{
+         "get":{
+            "description":"Get information on companies from an online company directory",
+            "operationId":"Moneyhouse",
+            "parameters":[
+               {
+                  "name":"query",
+                  "in":"query",
+                  "description":"Ask questions about companies from a company directory. Questions might be 'How many employees does Cudos have?' or 'Tell me if Cudos is still active.' There is information about the company age, revenue, number of employees and if the company is still active.",
+                  "required":true,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "deprecated":false
+         }
       }
    },
    "components":{
