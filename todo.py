@@ -43,18 +43,15 @@ class Todo:
         self.save_todos()
 
     def delete_todo(self, id):
-        index = self.todos[self.todos['Id'] == id].index[0]
         try:
-            # Überprüfen, ob der Index im DataFrame vorhanden ist
-            if index >= 0 and index < len(self.todos):
-                self.todos = self.todos.drop(self.todos.index[index]).reset_index(drop=True)
-                self.save_todos()
-                return "To-Do erfolgreich gelöscht."
-            else:
-                return f"Index {index} existiert nicht."
+            index = self.todos[self.todos['Id'] == id].index[0]
+            self.todos = self.todos.drop(index)
+            self.save_todos()
+            return("To-Do erfolgreich gelöscht.")
         except Exception as e:
             print("Fehler beim Löschen des To-Dos: "+str(e))
             return("Fehler beim Löschen des To-Dos: "+str(e))
+
 
     def query_todos(self, query):
         print("Executing query: "+query)
