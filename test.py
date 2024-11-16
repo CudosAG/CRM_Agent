@@ -9,7 +9,7 @@ sys.path.append('common')
 from common.gpt import get_single_completion # type: ignore
 
 BASE_URL = 'http://localhost:6000/crm'
-# BASE_URL = 'https://baettig.org/crm'
+BASE_URL = 'https://baettig.org/crm'
 SQL_URL = BASE_URL+'/sqlquery'
 PLAIN_URL = BASE_URL+'/query'
 TODO_URL = BASE_URL+'/todos'
@@ -104,11 +104,24 @@ def test_todo(test):
         return None  
     
 if __name__ == '__main__':
+    tests_made = 0
+    tests_passed = 0
+
+    def update_stats(ans):
+        global tests_made
+        global tests_passed
+        tests_made += 1
+        if ans == "JA":
+            tests_passed += 1
+        print(f"Tests passed: {tests_passed}/{tests_made}")
+
     for test in tests_crm:
          print(test["question"])
          ans = test_ai(test)
+         update_stats(ans)
          print(ans)
     for test in tests_todo:
         print(test["question"])
         ans = test_todo(test)
+        update_stats(ans)
         print(ans)

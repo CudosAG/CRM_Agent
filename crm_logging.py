@@ -5,7 +5,7 @@ test_case_logger.setLevel(logging.INFO)
 
 file_handler = logging.FileHandler('test_cases.log', mode='a')
 file_handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(message)s')
+formatter = logging.Formatter(format='%(asctime)s', datefmt='%H:%M:%S')
 file_handler.setFormatter(formatter)
 
 test_case_logger.addHandler(file_handler)
