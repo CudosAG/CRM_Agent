@@ -40,6 +40,7 @@ Table 1: people
 - Position: Entwicklungsleiter
 - Abteilung: F&E
 - HatFirmaVerlassen: Ja
+- CudosTrailVorgestellt: 01-11-2024
 
 Table 2: organizations
 - Name: IBM

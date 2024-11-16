@@ -82,7 +82,8 @@ def process_people(folder_in, folder_out):
         "primäre E-Mail",
         "Position",
         "Department / Business Unit",
-        "Hat Unternehmen verlassen"
+        "Hat Unternehmen verlassen",
+        "Trainee-Programm vorgestellt"
     ]]
     
     people_transformed = people_transformed.rename(columns={
@@ -91,7 +92,8 @@ def process_people(folder_in, folder_out):
         "Department / Business Unit": "Abteilung",
         "Organisation": "Firma",
         "Hat Unternehmen verlassen": "HatFirmaVerlassen",
-        "Nachname": "Name"
+        "Nachname": "Name",
+        "Trainee-Programm vorgestellt": "CudosTrailVorgestellt"
     })
     
     people_transformed['Telefon'] = people['Telefon Büro'] + " / " + people['mobiles Telefon']
