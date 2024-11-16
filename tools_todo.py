@@ -123,7 +123,7 @@ Felder sind Id, Name, Firma, Notiz, Deadline.
             )
         elif function_name == "delete_todo_data":
             function_response = function_to_call(
-                index=function_args.get("index")
+                index=function_args.get("id")
             )
         else:
             print("Function not found: ", function_name)
