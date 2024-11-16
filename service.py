@@ -54,14 +54,14 @@ def plain_text_query():
 
     try:
         request_id = str(uuid.uuid4())
-        test_case_logger.info(f"{request_id} Received query: {query}")
+        test_case_logger.info(f"{request_id} Received query:\n {query}")
         print(f"Received query: {query}")
         query = preprocess(query)
         print(f"Preprocessed query: {query}")
-        test_case_logger.info(f"{request_id} Preprocessed query: {query}")
+        test_case_logger.info(f"{request_id} Preprocessed query:\n {query}")
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools, request_id)
-        test_case_logger.info(f"{request_id} Final response: {result}")
+        test_case_logger.info(f"{request_id} Final response:\n {result}")
         print(f"Final response: {result}")
         if is_valid_json(result):
             return result, 200
