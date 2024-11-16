@@ -20,18 +20,18 @@ if RETOS_API_TOKEN is None:
 
 tests_todo = [ 
 
-        # { "question":"Welche todos gibt es?",
-        #     "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        # { "question":"Füge ein todo hinzu: Name: Max1, Firma: IBM1, Notiz: Test, Deadline: 2023-12-31",
-        #     "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        # { "question":"Füge ein todo hinzu: Name: Max2, Firma: IBM2, Notiz: Test, Deadline: 2023-12-31",
-        #     "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        #  { "question":"Welche todos gibt es?",
-        #     "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
+        { "question":"Welche todos gibt es?",
+            "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+        { "question":"Füge ein todo hinzu: Name: Max1, Firma: IBM1, Notiz: Test, Deadline: 2023-12-31",
+            "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+        { "question":"Füge ein todo hinzu: Name: Max2, Firma: IBM2, Notiz: Test, Deadline: 2023-12-31",
+            "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+         { "question":"Welche todos gibt es?",
+            "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
         { "question":"Lösche das Todo 1",
             "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
         },
@@ -42,27 +42,27 @@ tests_todo = [
 ]
 
 tests_crm = [ 
-        #   { "question":"wieviele einträge hat es in der tabelle organizations?",
-        #     "test":"Enthält die Antwort eine Aussage über die Anzahl Einträge, die >0 ist? Antworte NUR mit 'JA' oder 'NEIN'."
-        #   },
+        { "question":"wieviele einträge hat es in der tabelle organizations?",
+          "test":"Enthält die Antwort eine Aussage über die Anzahl Einträge, die >0 ist? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
           
-        #   { "question":"Welche Firmen gibt es in Fahrweid",
-        #     "test":"Enthält die Antwort CUDOS AG, Antworte NUR mit 'JA' oder 'NEIN'."
-        #   },
+        { "question":"Welche Firmen gibt es in Fahrweid",
+          "test":"Enthält die Antwort CUDOS AG, Antworte NUR mit 'JA' oder 'NEIN'."
+        },
           
-        #   { "question":"Bei welchen Organisationen ist ein CTO erfasst? Gib mir auch NAme/Vorname zurück",
-        #     "test":"Enthält die Antwort eine Liste von Organisationen? Antworte NUR mit 'JA' oder 'NEIN'."
-        #   },
+        { "question":"Bei welchen Organisationen ist ein CTO erfasst? Gib mir auch NAme/Vorname zurück",
+          "test":"Enthält die Antwort eine Liste von Organisationen? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
 
-        #   { "question":"Bei welchen Organisationen im Umkreis <10km um Zürich ist ein CTO erfasst? Gib mir auch NAme/Vorname zurück",
-        #    "test":"Enthält die Antwort eine Liste von Organisationen? Antworte NUR mit 'JA' oder 'NEIN'."
-        #  },        
-        # { "question":"Welche offenen potentiale mit startdatum < 31.12.24 gibt es?",
-        #    "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        #  { "question":"Welche offenen potentiale gibt es mit startdatum < 31.12.24? Gib Name, Kunde, Startdatum und status zurück",
-        #    "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
-        #  },        
+        { "question":"Bei welchen Organisationen im Umkreis <10km um Zürich ist ein CTO erfasst? Gib mir auch NAme/Vorname zurück",
+          "test":"Enthält die Antwort eine Liste von Organisationen? Antworte NUR mit 'JA' oder 'NEIN'."
+        },        
+        { "question":"Welche offenen potentiale mit startdatum < 31.12.24 gibt es?",
+           "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+        { "question":"Welche offenen potentiale gibt es mit startdatum < 31.12.24? Gib Name, Kunde, Startdatum und status zurück",
+           "test":"Enthält die Antwort eine Liste von Potenitalen? Antworte NUR mit 'JA' oder 'NEIN'."
+        },        
 ]
           
 def test_ai(test):
