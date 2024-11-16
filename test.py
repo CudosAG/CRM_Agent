@@ -9,7 +9,7 @@ sys.path.append('common')
 from common.gpt import get_single_completion # type: ignore
 
 BASE_URL = 'http://localhost:6000/crm'
-BASE_URL = 'https://baettig.org/crm'
+# BASE_URL = 'https://baettig.org/crm'
 SQL_URL = BASE_URL+'/sqlquery'
 PLAIN_URL = BASE_URL+'/query'
 TODO_URL = BASE_URL+'/todos'
@@ -20,31 +20,22 @@ if RETOS_API_TOKEN is None:
 
 tests_todo = [ 
 
-        # { "question":"Welche todos gibt es?",
-        #     "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        # { "question":"Füge ein todo hinzu: Name: Max1, Firma: IBM1, Notiz: Test, Deadline: 2023-12-31",
-        #     "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        # { "question":"Füge ein todo hinzu: Name: Max2, Firma: IBM2, Notiz: Test, Deadline: 2023-12-31",
-        #     "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        #  { "question":"Welche todos gibt es?",
-        #     "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        # { "question":"Lösche das Todo mit Index 2",
-        #     "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        #  { "question":"Welche todos gibt es?",
-        #     "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        #  { "question":"Lösche das Todo mit Index 2",
-        #     "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
-        # { "question":"Welche todos gibt es?",
-        #     "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
-        # },
         { "question":"Welche todos gibt es?",
+            "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+        { "question":"Füge ein todo hinzu: Name: Max1, Firma: IBM1, Notiz: Test, Deadline: 2023-12-31",
+            "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+        { "question":"Füge ein todo hinzu: Name: Max2, Firma: IBM2, Notiz: Test, Deadline: 2023-12-31",
+            "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+         { "question":"Welche todos gibt es?",
+            "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+        { "question":"Lösche das Todo mit Id 8",
+            "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
+        },
+         { "question":"Welche todos gibt es?",
             "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
         }
           

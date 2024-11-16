@@ -53,7 +53,7 @@ class ToolsTodo:
                                 "type": "string",
                                 "description": """
 Gib deine SQL-Abfrage ein (z.B. SELECT * FROM todos WHERE Firma='XYZ')
-Felder sind Name, Firma, Notiz, Deadline.
+Felder sind Id, Name, Firma, Notiz, Deadline.
 """,
                             }
                         },
@@ -98,9 +98,9 @@ Felder sind Name, Firma, Notiz, Deadline.
                     "parameters": {
                         "type": "object",
                         "properties": {
-                            "index": {
+                            "id": {
                                 "type": "string",
-                                "description": "index des zu löschenden Todos"
+                                "description": "id des zu löschenden Todos"
                             }
                         },
                         "required": ["index"]
