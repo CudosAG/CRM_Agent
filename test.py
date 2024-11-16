@@ -32,7 +32,7 @@ tests_todo = [
         #  { "question":"Welche todos gibt es?",
         #     "test":"Enthält die Antwort eine Liste von todos? Antworte NUR mit 'JA' oder 'NEIN'."
         # },
-        { "question":"Lösche das Todo mit Id 3",
+        { "question":"Lösche das Todo 1",
             "test":"War die Aktion erfolgreich? Antworte NUR mit 'JA' oder 'NEIN'."
         },
          { "question":"Welche todos gibt es?",

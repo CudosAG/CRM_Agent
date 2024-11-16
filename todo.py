@@ -48,9 +48,11 @@ class Todo:
             id = int(id)
             filtered_todos = self.todos[self.todos['Id'] == id]
             if filtered_todos.empty:
+                print("To-Do mit der angegebenen ID wurde nicht gefunden.")
                 return "To-Do mit der angegebenen ID wurde nicht gefunden."
             
             index = filtered_todos.index[0]
+            print("Lösche To-Do mit ID "+str(id))
             self.todos = self.todos.drop(index)
             self.save_todos()
             return("To-Do erfolgreich gelöscht.")
